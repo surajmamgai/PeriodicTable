@@ -1,0 +1,2715 @@
+body {
+  background: #101318;
+}
+
+.tslab-pt {
+  text-shadow: 0 0 0.4vw currentColor;
+}
+
+.tslab-pt .wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 2%;
+}
+
+.tslab-pt .wrapper > input {
+  -webkit-appearance: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tslab-pt .periodic-table {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(18, 1fr);
+}
+
+.tslab-pt .element {
+  position: relative;
+  font-size: 0.5vw;
+  padding-bottom: 100%;
+  cursor: pointer;
+  color: #fff;
+  transition: 500ms;
+}
+
+.tslab-pt .element .overlay {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #101318;
+  opacity: 0;
+  pointer-events: none;
+  transition: 500ms;
+}
+
+.tslab-pt .element .square {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid;
+  box-sizing: border-box;
+  background: #101318;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition-property: transform, z-index, left, right, top, bottom;
+  transition-duration: 100ms, 0ms, 200ms, 200ms, 200ms, 200ms;
+  transition-delay: 0ms, 100ms, 0ms, 0ms, 0ms, 0ms;
+}
+
+.tslab-pt .element .atomic-number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 2px;
+}
+
+.tslab-pt .element .label {
+  text-align: center;
+  transition: 200ms;
+}
+
+.tslab-pt .element .symbol {
+  font-size: 1.7vw;
+}
+
+.tslab-pt .element .name {
+  font-size: 0.7vw;
+}
+
+.tslab-pt .element .atomic-mass {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2px;
+  text-align: center;
+}
+
+.tslab-pt .element .atomic-weight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  list-style: none;
+  margin: 0;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: right;
+}
+
+.tslab-pt .element .model {
+  display: none;
+  position: absolute;
+  left: -500%;
+  right: -500%;
+  top: -500%;
+  bottom: -500%;
+  transform: scale(0.1);
+}
+
+.tslab-pt .element .model .orbital {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 5px solid;
+  border-radius: 50%;
+  opacity: 0.25;
+}
+
+.tslab-pt .element .model .orbital:nth-child(1) {
+  margin: 10%;
+  animation-duration: 40s;
+}
+
+.tslab-pt .element .model .orbital:nth-child(2) {
+  margin: 15.5%;
+  animation-duration: 34s;
+}
+
+.tslab-pt .element .model .orbital:nth-child(3) {
+  margin: 21%;
+  animation-duration: 28s;
+}
+
+.tslab-pt .element .model .orbital:nth-child(4) {
+  margin: 26.5%;
+  animation-duration: 22s;
+}
+
+.tslab-pt .element .model .orbital:nth-child(5) {
+  margin: 32%;
+  animation-duration: 16s;
+}
+
+.tslab-pt .element .model .orbital:nth-child(6) {
+  margin: 37.5%;
+  animation-duration: 10s;
+}
+
+.tslab-pt .element .model .orbital:nth-child(7) {
+  margin: 43%;
+  animation-duration: 4s;
+}
+
+.tslab-pt .element .model .orbital .electron {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.tslab-pt .element .model .orbital .electron::before {
+  content: "";
+  position: absolute;
+  left: calc(50% - 0.7vw);
+  top: -0.7vw;
+  width: 1.4vw;
+  height: 1.4vw;
+  background-color: currentColor;
+  border-radius: 50%;
+  opacity: 0.75;
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(1):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(2):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(2):first-child ~ .electron:nth-child(2) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(3):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(3):first-child ~ .electron:nth-child(2) {
+  transform: rotate(120deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(3):first-child ~ .electron:nth-child(3) {
+  transform: rotate(240deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(4):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(4):first-child ~ .electron:nth-child(2) {
+  transform: rotate(90deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(4):first-child ~ .electron:nth-child(3) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(4):first-child ~ .electron:nth-child(4) {
+  transform: rotate(270deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(5):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(5):first-child ~ .electron:nth-child(2) {
+  transform: rotate(72deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(5):first-child ~ .electron:nth-child(3) {
+  transform: rotate(144deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(5):first-child ~ .electron:nth-child(4) {
+  transform: rotate(216deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(5):first-child ~ .electron:nth-child(5) {
+  transform: rotate(288deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(6):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(6):first-child ~ .electron:nth-child(2) {
+  transform: rotate(60deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(6):first-child ~ .electron:nth-child(3) {
+  transform: rotate(120deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(6):first-child ~ .electron:nth-child(4) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(6):first-child ~ .electron:nth-child(5) {
+  transform: rotate(240deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(6):first-child ~ .electron:nth-child(6) {
+  transform: rotate(300deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(7):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(7):first-child ~ .electron:nth-child(2) {
+  transform: rotate(51.42857deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(7):first-child ~ .electron:nth-child(3) {
+  transform: rotate(102.85714deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(7):first-child ~ .electron:nth-child(4) {
+  transform: rotate(154.28571deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(7):first-child ~ .electron:nth-child(5) {
+  transform: rotate(205.71429deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(7):first-child ~ .electron:nth-child(6) {
+  transform: rotate(257.14286deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(7):first-child ~ .electron:nth-child(7) {
+  transform: rotate(308.57143deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(8):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(8):first-child ~ .electron:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(8):first-child ~ .electron:nth-child(3) {
+  transform: rotate(90deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(8):first-child ~ .electron:nth-child(4) {
+  transform: rotate(135deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(8):first-child ~ .electron:nth-child(5) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(8):first-child ~ .electron:nth-child(6) {
+  transform: rotate(225deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(8):first-child ~ .electron:nth-child(7) {
+  transform: rotate(270deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(8):first-child ~ .electron:nth-child(8) {
+  transform: rotate(315deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(9):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(9):first-child ~ .electron:nth-child(2) {
+  transform: rotate(40deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(9):first-child ~ .electron:nth-child(3) {
+  transform: rotate(80deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(9):first-child ~ .electron:nth-child(4) {
+  transform: rotate(120deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(9):first-child ~ .electron:nth-child(5) {
+  transform: rotate(160deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(9):first-child ~ .electron:nth-child(6) {
+  transform: rotate(200deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(9):first-child ~ .electron:nth-child(7) {
+  transform: rotate(240deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(9):first-child ~ .electron:nth-child(8) {
+  transform: rotate(280deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(9):first-child ~ .electron:nth-child(9) {
+  transform: rotate(320deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(10):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(10):first-child ~ .electron:nth-child(2) {
+  transform: rotate(36deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(10):first-child ~ .electron:nth-child(3) {
+  transform: rotate(72deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(10):first-child ~ .electron:nth-child(4) {
+  transform: rotate(108deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(10):first-child ~ .electron:nth-child(5) {
+  transform: rotate(144deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(10):first-child ~ .electron:nth-child(6) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(10):first-child ~ .electron:nth-child(7) {
+  transform: rotate(216deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(10):first-child ~ .electron:nth-child(8) {
+  transform: rotate(252deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(10):first-child ~ .electron:nth-child(9) {
+  transform: rotate(288deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(10):first-child ~ .electron:nth-child(10) {
+  transform: rotate(324deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(2) {
+  transform: rotate(32.72727deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(3) {
+  transform: rotate(65.45455deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(4) {
+  transform: rotate(98.18182deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(5) {
+  transform: rotate(130.90909deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(6) {
+  transform: rotate(163.63636deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(7) {
+  transform: rotate(196.36364deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(8) {
+  transform: rotate(229.09091deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(9) {
+  transform: rotate(261.81818deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(10) {
+  transform: rotate(294.54545deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(11):first-child ~ .electron:nth-child(11) {
+  transform: rotate(327.27273deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(2) {
+  transform: rotate(30deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(3) {
+  transform: rotate(60deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(4) {
+  transform: rotate(90deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(5) {
+  transform: rotate(120deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(6) {
+  transform: rotate(150deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(7) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(8) {
+  transform: rotate(210deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(9) {
+  transform: rotate(240deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(10) {
+  transform: rotate(270deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(11) {
+  transform: rotate(300deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(12):first-child ~ .electron:nth-child(12) {
+  transform: rotate(330deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(2) {
+  transform: rotate(27.69231deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(3) {
+  transform: rotate(55.38462deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(4) {
+  transform: rotate(83.07692deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(5) {
+  transform: rotate(110.76923deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(6) {
+  transform: rotate(138.46154deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(7) {
+  transform: rotate(166.15385deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(8) {
+  transform: rotate(193.84615deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(9) {
+  transform: rotate(221.53846deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(10) {
+  transform: rotate(249.23077deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(11) {
+  transform: rotate(276.92308deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(12) {
+  transform: rotate(304.61538deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(13):first-child ~ .electron:nth-child(13) {
+  transform: rotate(332.30769deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(2) {
+  transform: rotate(25.71429deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(3) {
+  transform: rotate(51.42857deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(4) {
+  transform: rotate(77.14286deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(5) {
+  transform: rotate(102.85714deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(6) {
+  transform: rotate(128.57143deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(7) {
+  transform: rotate(154.28571deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(8) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(9) {
+  transform: rotate(205.71429deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(10) {
+  transform: rotate(231.42857deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(11) {
+  transform: rotate(257.14286deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(12) {
+  transform: rotate(282.85714deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(13) {
+  transform: rotate(308.57143deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(14):first-child ~ .electron:nth-child(14) {
+  transform: rotate(334.28571deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(2) {
+  transform: rotate(24deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(3) {
+  transform: rotate(48deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(4) {
+  transform: rotate(72deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(5) {
+  transform: rotate(96deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(6) {
+  transform: rotate(120deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(7) {
+  transform: rotate(144deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(8) {
+  transform: rotate(168deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(9) {
+  transform: rotate(192deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(10) {
+  transform: rotate(216deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(11) {
+  transform: rotate(240deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(12) {
+  transform: rotate(264deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(13) {
+  transform: rotate(288deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(14) {
+  transform: rotate(312deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(15):first-child ~ .electron:nth-child(15) {
+  transform: rotate(336deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(2) {
+  transform: rotate(22.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(3) {
+  transform: rotate(45deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(4) {
+  transform: rotate(67.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(5) {
+  transform: rotate(90deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(6) {
+  transform: rotate(112.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(7) {
+  transform: rotate(135deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(8) {
+  transform: rotate(157.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(9) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(10) {
+  transform: rotate(202.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(11) {
+  transform: rotate(225deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(12) {
+  transform: rotate(247.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(13) {
+  transform: rotate(270deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(14) {
+  transform: rotate(292.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(15) {
+  transform: rotate(315deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(16):first-child ~ .electron:nth-child(16) {
+  transform: rotate(337.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(2) {
+  transform: rotate(21.17647deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(3) {
+  transform: rotate(42.35294deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(4) {
+  transform: rotate(63.52941deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(5) {
+  transform: rotate(84.70588deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(6) {
+  transform: rotate(105.88235deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(7) {
+  transform: rotate(127.05882deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(8) {
+  transform: rotate(148.23529deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(9) {
+  transform: rotate(169.41176deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(10) {
+  transform: rotate(190.58824deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(11) {
+  transform: rotate(211.76471deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(12) {
+  transform: rotate(232.94118deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(13) {
+  transform: rotate(254.11765deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(14) {
+  transform: rotate(275.29412deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(15) {
+  transform: rotate(296.47059deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(16) {
+  transform: rotate(317.64706deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(17):first-child ~ .electron:nth-child(17) {
+  transform: rotate(338.82353deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(2) {
+  transform: rotate(20deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(3) {
+  transform: rotate(40deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(4) {
+  transform: rotate(60deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(5) {
+  transform: rotate(80deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(6) {
+  transform: rotate(100deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(7) {
+  transform: rotate(120deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(8) {
+  transform: rotate(140deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(9) {
+  transform: rotate(160deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(10) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(11) {
+  transform: rotate(200deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(12) {
+  transform: rotate(220deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(13) {
+  transform: rotate(240deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(14) {
+  transform: rotate(260deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(15) {
+  transform: rotate(280deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(16) {
+  transform: rotate(300deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(17) {
+  transform: rotate(320deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(18):first-child ~ .electron:nth-child(18) {
+  transform: rotate(340deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(2) {
+  transform: rotate(18.94737deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(3) {
+  transform: rotate(37.89474deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(4) {
+  transform: rotate(56.84211deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(5) {
+  transform: rotate(75.78947deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(6) {
+  transform: rotate(94.73684deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(7) {
+  transform: rotate(113.68421deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(8) {
+  transform: rotate(132.63158deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(9) {
+  transform: rotate(151.57895deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(10) {
+  transform: rotate(170.52632deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(11) {
+  transform: rotate(189.47368deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(12) {
+  transform: rotate(208.42105deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(13) {
+  transform: rotate(227.36842deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(14) {
+  transform: rotate(246.31579deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(15) {
+  transform: rotate(265.26316deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(16) {
+  transform: rotate(284.21053deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(17) {
+  transform: rotate(303.15789deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(18) {
+  transform: rotate(322.10526deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(19):first-child ~ .electron:nth-child(19) {
+  transform: rotate(341.05263deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(2) {
+  transform: rotate(18deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(3) {
+  transform: rotate(36deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(4) {
+  transform: rotate(54deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(5) {
+  transform: rotate(72deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(6) {
+  transform: rotate(90deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(7) {
+  transform: rotate(108deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(8) {
+  transform: rotate(126deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(9) {
+  transform: rotate(144deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(10) {
+  transform: rotate(162deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(11) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(12) {
+  transform: rotate(198deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(13) {
+  transform: rotate(216deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(14) {
+  transform: rotate(234deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(15) {
+  transform: rotate(252deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(16) {
+  transform: rotate(270deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(17) {
+  transform: rotate(288deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(18) {
+  transform: rotate(306deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(19) {
+  transform: rotate(324deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(20):first-child ~ .electron:nth-child(20) {
+  transform: rotate(342deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(2) {
+  transform: rotate(17.14286deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(3) {
+  transform: rotate(34.28571deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(4) {
+  transform: rotate(51.42857deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(5) {
+  transform: rotate(68.57143deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(6) {
+  transform: rotate(85.71429deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(7) {
+  transform: rotate(102.85714deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(8) {
+  transform: rotate(120deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(9) {
+  transform: rotate(137.14286deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(10) {
+  transform: rotate(154.28571deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(11) {
+  transform: rotate(171.42857deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(12) {
+  transform: rotate(188.57143deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(13) {
+  transform: rotate(205.71429deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(14) {
+  transform: rotate(222.85714deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(15) {
+  transform: rotate(240deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(16) {
+  transform: rotate(257.14286deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(17) {
+  transform: rotate(274.28571deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(18) {
+  transform: rotate(291.42857deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(19) {
+  transform: rotate(308.57143deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(20) {
+  transform: rotate(325.71429deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(21):first-child ~ .electron:nth-child(21) {
+  transform: rotate(342.85714deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(2) {
+  transform: rotate(16.36364deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(3) {
+  transform: rotate(32.72727deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(4) {
+  transform: rotate(49.09091deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(5) {
+  transform: rotate(65.45455deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(6) {
+  transform: rotate(81.81818deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(7) {
+  transform: rotate(98.18182deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(8) {
+  transform: rotate(114.54545deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(9) {
+  transform: rotate(130.90909deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(10) {
+  transform: rotate(147.27273deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(11) {
+  transform: rotate(163.63636deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(12) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(13) {
+  transform: rotate(196.36364deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(14) {
+  transform: rotate(212.72727deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(15) {
+  transform: rotate(229.09091deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(16) {
+  transform: rotate(245.45455deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(17) {
+  transform: rotate(261.81818deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(18) {
+  transform: rotate(278.18182deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(19) {
+  transform: rotate(294.54545deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(20) {
+  transform: rotate(310.90909deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(21) {
+  transform: rotate(327.27273deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(22):first-child ~ .electron:nth-child(22) {
+  transform: rotate(343.63636deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(2) {
+  transform: rotate(15.65217deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(3) {
+  transform: rotate(31.30435deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(4) {
+  transform: rotate(46.95652deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(5) {
+  transform: rotate(62.6087deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(6) {
+  transform: rotate(78.26087deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(7) {
+  transform: rotate(93.91304deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(8) {
+  transform: rotate(109.56522deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(9) {
+  transform: rotate(125.21739deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(10) {
+  transform: rotate(140.86957deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(11) {
+  transform: rotate(156.52174deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(12) {
+  transform: rotate(172.17391deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(13) {
+  transform: rotate(187.82609deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(14) {
+  transform: rotate(203.47826deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(15) {
+  transform: rotate(219.13043deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(16) {
+  transform: rotate(234.78261deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(17) {
+  transform: rotate(250.43478deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(18) {
+  transform: rotate(266.08696deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(19) {
+  transform: rotate(281.73913deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(20) {
+  transform: rotate(297.3913deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(21) {
+  transform: rotate(313.04348deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(22) {
+  transform: rotate(328.69565deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(23):first-child ~ .electron:nth-child(23) {
+  transform: rotate(344.34783deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(2) {
+  transform: rotate(15deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(3) {
+  transform: rotate(30deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(4) {
+  transform: rotate(45deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(5) {
+  transform: rotate(60deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(6) {
+  transform: rotate(75deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(7) {
+  transform: rotate(90deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(8) {
+  transform: rotate(105deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(9) {
+  transform: rotate(120deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(10) {
+  transform: rotate(135deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(11) {
+  transform: rotate(150deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(12) {
+  transform: rotate(165deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(13) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(14) {
+  transform: rotate(195deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(15) {
+  transform: rotate(210deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(16) {
+  transform: rotate(225deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(17) {
+  transform: rotate(240deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(18) {
+  transform: rotate(255deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(19) {
+  transform: rotate(270deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(20) {
+  transform: rotate(285deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(21) {
+  transform: rotate(300deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(22) {
+  transform: rotate(315deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(23) {
+  transform: rotate(330deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(24):first-child ~ .electron:nth-child(24) {
+  transform: rotate(345deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(2) {
+  transform: rotate(14.4deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(3) {
+  transform: rotate(28.8deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(4) {
+  transform: rotate(43.2deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(5) {
+  transform: rotate(57.6deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(6) {
+  transform: rotate(72deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(7) {
+  transform: rotate(86.4deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(8) {
+  transform: rotate(100.8deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(9) {
+  transform: rotate(115.2deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(10) {
+  transform: rotate(129.6deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(11) {
+  transform: rotate(144deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(12) {
+  transform: rotate(158.4deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(13) {
+  transform: rotate(172.8deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(14) {
+  transform: rotate(187.2deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(15) {
+  transform: rotate(201.6deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(16) {
+  transform: rotate(216deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(17) {
+  transform: rotate(230.4deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(18) {
+  transform: rotate(244.8deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(19) {
+  transform: rotate(259.2deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(20) {
+  transform: rotate(273.6deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(21) {
+  transform: rotate(288deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(22) {
+  transform: rotate(302.4deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(23) {
+  transform: rotate(316.8deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(24) {
+  transform: rotate(331.2deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(25):first-child ~ .electron:nth-child(25) {
+  transform: rotate(345.6deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(2) {
+  transform: rotate(13.84615deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(3) {
+  transform: rotate(27.69231deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(4) {
+  transform: rotate(41.53846deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(5) {
+  transform: rotate(55.38462deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(6) {
+  transform: rotate(69.23077deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(7) {
+  transform: rotate(83.07692deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(8) {
+  transform: rotate(96.92308deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(9) {
+  transform: rotate(110.76923deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(10) {
+  transform: rotate(124.61538deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(11) {
+  transform: rotate(138.46154deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(12) {
+  transform: rotate(152.30769deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(13) {
+  transform: rotate(166.15385deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(14) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(15) {
+  transform: rotate(193.84615deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(16) {
+  transform: rotate(207.69231deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(17) {
+  transform: rotate(221.53846deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(18) {
+  transform: rotate(235.38462deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(19) {
+  transform: rotate(249.23077deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(20) {
+  transform: rotate(263.07692deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(21) {
+  transform: rotate(276.92308deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(22) {
+  transform: rotate(290.76923deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(23) {
+  transform: rotate(304.61538deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(24) {
+  transform: rotate(318.46154deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(25) {
+  transform: rotate(332.30769deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(26):first-child ~ .electron:nth-child(26) {
+  transform: rotate(346.15385deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(2) {
+  transform: rotate(13.33333deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(3) {
+  transform: rotate(26.66667deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(4) {
+  transform: rotate(40deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(5) {
+  transform: rotate(53.33333deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(6) {
+  transform: rotate(66.66667deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(7) {
+  transform: rotate(80deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(8) {
+  transform: rotate(93.33333deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(9) {
+  transform: rotate(106.66667deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(10) {
+  transform: rotate(120deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(11) {
+  transform: rotate(133.33333deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(12) {
+  transform: rotate(146.66667deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(13) {
+  transform: rotate(160deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(14) {
+  transform: rotate(173.33333deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(15) {
+  transform: rotate(186.66667deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(16) {
+  transform: rotate(200deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(17) {
+  transform: rotate(213.33333deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(18) {
+  transform: rotate(226.66667deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(19) {
+  transform: rotate(240deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(20) {
+  transform: rotate(253.33333deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(21) {
+  transform: rotate(266.66667deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(22) {
+  transform: rotate(280deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(23) {
+  transform: rotate(293.33333deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(24) {
+  transform: rotate(306.66667deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(25) {
+  transform: rotate(320deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(26) {
+  transform: rotate(333.33333deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(27):first-child ~ .electron:nth-child(27) {
+  transform: rotate(346.66667deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(2) {
+  transform: rotate(12.85714deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(3) {
+  transform: rotate(25.71429deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(4) {
+  transform: rotate(38.57143deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(5) {
+  transform: rotate(51.42857deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(6) {
+  transform: rotate(64.28571deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(7) {
+  transform: rotate(77.14286deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(8) {
+  transform: rotate(90deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(9) {
+  transform: rotate(102.85714deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(10) {
+  transform: rotate(115.71429deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(11) {
+  transform: rotate(128.57143deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(12) {
+  transform: rotate(141.42857deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(13) {
+  transform: rotate(154.28571deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(14) {
+  transform: rotate(167.14286deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(15) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(16) {
+  transform: rotate(192.85714deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(17) {
+  transform: rotate(205.71429deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(18) {
+  transform: rotate(218.57143deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(19) {
+  transform: rotate(231.42857deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(20) {
+  transform: rotate(244.28571deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(21) {
+  transform: rotate(257.14286deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(22) {
+  transform: rotate(270deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(23) {
+  transform: rotate(282.85714deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(24) {
+  transform: rotate(295.71429deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(25) {
+  transform: rotate(308.57143deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(26) {
+  transform: rotate(321.42857deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(27) {
+  transform: rotate(334.28571deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(28):first-child ~ .electron:nth-child(28) {
+  transform: rotate(347.14286deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(2) {
+  transform: rotate(12.41379deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(3) {
+  transform: rotate(24.82759deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(4) {
+  transform: rotate(37.24138deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(5) {
+  transform: rotate(49.65517deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(6) {
+  transform: rotate(62.06897deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(7) {
+  transform: rotate(74.48276deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(8) {
+  transform: rotate(86.89655deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(9) {
+  transform: rotate(99.31034deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(10) {
+  transform: rotate(111.72414deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(11) {
+  transform: rotate(124.13793deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(12) {
+  transform: rotate(136.55172deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(13) {
+  transform: rotate(148.96552deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(14) {
+  transform: rotate(161.37931deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(15) {
+  transform: rotate(173.7931deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(16) {
+  transform: rotate(186.2069deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(17) {
+  transform: rotate(198.62069deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(18) {
+  transform: rotate(211.03448deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(19) {
+  transform: rotate(223.44828deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(20) {
+  transform: rotate(235.86207deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(21) {
+  transform: rotate(248.27586deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(22) {
+  transform: rotate(260.68966deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(23) {
+  transform: rotate(273.10345deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(24) {
+  transform: rotate(285.51724deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(25) {
+  transform: rotate(297.93103deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(26) {
+  transform: rotate(310.34483deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(27) {
+  transform: rotate(322.75862deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(28) {
+  transform: rotate(335.17241deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(29):first-child ~ .electron:nth-child(29) {
+  transform: rotate(347.58621deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(2) {
+  transform: rotate(12deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(3) {
+  transform: rotate(24deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(4) {
+  transform: rotate(36deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(5) {
+  transform: rotate(48deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(6) {
+  transform: rotate(60deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(7) {
+  transform: rotate(72deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(8) {
+  transform: rotate(84deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(9) {
+  transform: rotate(96deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(10) {
+  transform: rotate(108deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(11) {
+  transform: rotate(120deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(12) {
+  transform: rotate(132deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(13) {
+  transform: rotate(144deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(14) {
+  transform: rotate(156deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(15) {
+  transform: rotate(168deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(16) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(17) {
+  transform: rotate(192deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(18) {
+  transform: rotate(204deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(19) {
+  transform: rotate(216deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(20) {
+  transform: rotate(228deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(21) {
+  transform: rotate(240deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(22) {
+  transform: rotate(252deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(23) {
+  transform: rotate(264deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(24) {
+  transform: rotate(276deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(25) {
+  transform: rotate(288deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(26) {
+  transform: rotate(300deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(27) {
+  transform: rotate(312deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(28) {
+  transform: rotate(324deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(29) {
+  transform: rotate(336deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(30):first-child ~ .electron:nth-child(30) {
+  transform: rotate(348deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(2) {
+  transform: rotate(11.6129deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(3) {
+  transform: rotate(23.22581deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(4) {
+  transform: rotate(34.83871deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(5) {
+  transform: rotate(46.45161deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(6) {
+  transform: rotate(58.06452deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(7) {
+  transform: rotate(69.67742deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(8) {
+  transform: rotate(81.29032deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(9) {
+  transform: rotate(92.90323deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(10) {
+  transform: rotate(104.51613deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(11) {
+  transform: rotate(116.12903deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(12) {
+  transform: rotate(127.74194deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(13) {
+  transform: rotate(139.35484deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(14) {
+  transform: rotate(150.96774deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(15) {
+  transform: rotate(162.58065deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(16) {
+  transform: rotate(174.19355deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(17) {
+  transform: rotate(185.80645deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(18) {
+  transform: rotate(197.41935deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(19) {
+  transform: rotate(209.03226deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(20) {
+  transform: rotate(220.64516deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(21) {
+  transform: rotate(232.25806deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(22) {
+  transform: rotate(243.87097deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(23) {
+  transform: rotate(255.48387deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(24) {
+  transform: rotate(267.09677deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(25) {
+  transform: rotate(278.70968deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(26) {
+  transform: rotate(290.32258deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(27) {
+  transform: rotate(301.93548deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(28) {
+  transform: rotate(313.54839deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(29) {
+  transform: rotate(325.16129deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(30) {
+  transform: rotate(336.77419deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(31):first-child ~ .electron:nth-child(31) {
+  transform: rotate(348.3871deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(2) {
+  transform: rotate(11.25deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(3) {
+  transform: rotate(22.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(4) {
+  transform: rotate(33.75deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(5) {
+  transform: rotate(45deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(6) {
+  transform: rotate(56.25deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(7) {
+  transform: rotate(67.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(8) {
+  transform: rotate(78.75deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(9) {
+  transform: rotate(90deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(10) {
+  transform: rotate(101.25deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(11) {
+  transform: rotate(112.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(12) {
+  transform: rotate(123.75deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(13) {
+  transform: rotate(135deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(14) {
+  transform: rotate(146.25deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(15) {
+  transform: rotate(157.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(16) {
+  transform: rotate(168.75deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(17) {
+  transform: rotate(180deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(18) {
+  transform: rotate(191.25deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(19) {
+  transform: rotate(202.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(20) {
+  transform: rotate(213.75deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(21) {
+  transform: rotate(225deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(22) {
+  transform: rotate(236.25deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(23) {
+  transform: rotate(247.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(24) {
+  transform: rotate(258.75deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(25) {
+  transform: rotate(270deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(26) {
+  transform: rotate(281.25deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(27) {
+  transform: rotate(292.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(28) {
+  transform: rotate(303.75deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(29) {
+  transform: rotate(315deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(30) {
+  transform: rotate(326.25deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(31) {
+  transform: rotate(337.5deg);
+}
+
+.tslab-pt .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(32) {
+  transform: rotate(348.75deg);
+}
+
+.tslab-pt .element input[type="radio"] {
+  -webkit-appearance: none;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.tslab-pt .element input[type="radio"].activate:hover ~ .square {
+  z-index: 2;
+  transform: scale(1.35);
+  transition-delay: 0ms;
+  outline: none;
+  pointer-events: none;
+}
+
+.tslab-pt .element input[type="radio"].activate:checked + input[type="radio"].deactivate {
+  z-index: 3;
+  pointer-events: all;
+}
+
+.tslab-pt .element input[type="radio"].activate:checked ~ .overlay {
+  opacity: 0.75;
+}
+
+.tslab-pt .element input[type="radio"].activate:checked ~ .square {
+  z-index: 3;
+  transform: scale(3);
+  transition-duration: 500ms, 0ms, 200ms, 200ms, 200ms, 200ms;
+  transition-delay: 0ms;
+  outline: none;
+  cursor: auto;
+}
+
+.tslab-pt .element input[type="radio"].activate:checked ~ .square .label {
+  transition-duration: 500ms;
+  transform: scale(0.75);
+}
+
+.tslab-pt .element input[type="radio"].activate:checked ~ .square .atomic-weight {
+  opacity: 1;
+  transition: 500ms;
+}
+
+.tslab-pt .element input[type="radio"].activate:checked ~ .square .model {
+  display: block;
+  animation: fade-in;
+  animation-duration: 1s;
+}
+
+.tslab-pt .element input[type="radio"].activate:checked ~ .square .orbital {
+  animation-name: rotate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.tslab-pt .element input[type="radio"].deactivate {
+  position: fixed;
+  display: block;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tslab-pt .element input[type="radio"].deactivate:checked ~ .square {
+  z-index: 1;
+}
+
+.tslab-pt .placeholder {
+  position: relative;
+  z-index: -1;
+  font-size: 1vw;
+  padding-bottom: 100%;
+  color: #fff;
+  transition: 500ms;
+}
+
+.tslab-pt .placeholder .square {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+}
+
+.tslab-pt .gap {
+  position: relative;
+  padding-bottom: 100%;
+  transition: 500ms;
+}
+
+.tslab-pt .gap::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 50%;
+  height: calc(200% + 5px * 2 - 4px);
+  border-width: 0 0 2px 2px;
+  border-style: solid;
+  margin-left: -1px;
+  color: #fff;
+  opacity: 0.2;
+}
+
+.tslab-pt .alkali-metal {
+ color: #dee955;
+}
+
+.tslab-pt .alkaline-earth-metal {
+   color: #ecbe59;
+}
+
+.tslab-pt .lanthanoid {
+   color: #c686cc;
+}
+
+.tslab-pt .actinoid {
+color: #ec77a3;
+}
+
+.tslab-pt .transition-metal {
+ color: #4cddf3;
+}
+
+.tslab-pt .post-transition-metal {
+  color: #fd8572;
+}
+
+.tslab-pt .metalloid {
+color: #52ee61;
+}
+
+.tslab-pt .other-nonmetal {
+  color: #3aefb6;
+}
+
+.tslab-pt .noble-gas {
+ color: #759fff;
+}
+
+.tslab-pt .unknown {
+ color: #cccccc;
+}
+
+.tslab-pt .r1 {
+  grid-row: 1;
+}
+
+.tslab-pt .r2 {
+  grid-row: 2;
+}
+
+.tslab-pt .r3 {
+  grid-row: 3;
+}
+
+.tslab-pt .r4 {
+  grid-row: 4;
+}
+
+.tslab-pt .r5 {
+  grid-row: 5;
+}
+
+.tslab-pt .r6 {
+  grid-row: 6;
+}
+
+.tslab-pt .r7 {
+  grid-row: 7;
+}
+
+.tslab-pt .r8 {
+  grid-row: 8;
+}
+
+.tslab-pt .r9 {
+  grid-row: 9;
+}
+
+.tslab-pt .r10 {
+  grid-row: 10;
+}
+
+.tslab-pt .c1 {
+  grid-column: 1;
+}
+
+.tslab-pt .c2 {
+  grid-column: 2;
+}
+
+.tslab-pt .c3 {
+  grid-column: 3;
+}
+
+.tslab-pt .c4 {
+  grid-column: 4;
+}
+
+.tslab-pt .c5 {
+  grid-column: 5;
+}
+
+.tslab-pt .c6 {
+  grid-column: 6;
+}
+
+.tslab-pt .c7 {
+  grid-column: 7;
+}
+
+.tslab-pt .c8 {
+  grid-column: 8;
+}
+
+.tslab-pt .c9 {
+  grid-column: 9;
+}
+
+.tslab-pt .c10 {
+  grid-column: 10;
+}
+
+.tslab-pt .c11 {
+  grid-column: 11;
+}
+
+.tslab-pt .c12 {
+  grid-column: 12;
+}
+
+.tslab-pt .c13 {
+  grid-column: 13;
+}
+
+.tslab-pt .c14 {
+  grid-column: 14;
+}
+
+.tslab-pt .c15 {
+  grid-column: 15;
+}
+
+.tslab-pt .c16 {
+  grid-column: 16;
+}
+
+.tslab-pt .c17 {
+  grid-column: 17;
+}
+
+.tslab-pt .c18 {
+  grid-column: 18;
+}
+
+.tslab-pt .r1 input[type="radio"].activate:checked ~ .square {
+  top: 100%;
+}
+
+.tslab-pt .r10 input[type="radio"].activate:checked ~ .square {
+  top: -100%;
+}
+
+.tslab-pt .c1 input[type="radio"].activate:checked ~ .square {
+  left: 100%;
+}
+
+.tslab-pt .c18 input[type="radio"].activate:checked ~ .square {
+  left: -100%;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes noise {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  10% {
+    background-position: -5% -10%;
+  }
+  20% {
+    background-position: -15% 5%;
+  }
+  30% {
+    background-position: 7% -25%;
+  }
+  40% {
+    background-position: 20% 25%;
+  }
+  50% {
+    background-position: -25% 10%;
+  }
+  60% {
+    background-position: 15% 5%;
+  }
+  70% {
+    background-position: 0% 15%;
+  }
+  80% {
+    background-position: 25% 35%;
+  }
+  90% {
+    background-position: -10% 10%;
+  }
+}
+
+.tslab-pt .key {
+  position: relative;
+  z-index: 1;
+  grid-row: 1;
+  grid-column-start: 3;
+  grid-column-end: 17;
+  font-size: 0.8vw;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.tslab-pt .key .row {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.tslab-pt .key .row label {
+  opacity: 0.85;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.tslab-pt .key .row label:hover {
+  opacity: 1 !important;
+}
+
+.tslab-pt #alkali-metals:checked ~ .periodic-table .element:not(.alkali-metal),
+.tslab-pt #alkaline-earth-metals:checked ~ .periodic-table .element:not(.alkaline-earth-metal),
+.tslab-pt #lanthanoids:checked ~ .periodic-table .element:not(.lanthanoid),
+.tslab-pt #actinoids:checked ~ .periodic-table .element:not(.actinoid),
+.tslab-pt #transition-metals:checked ~ .periodic-table .element:not(.transition-metal),
+.tslab-pt #post-transition-metals:checked ~ .periodic-table .element:not(.post-transition-metal),
+.tslab-pt #metalloids:checked ~ .periodic-table .element:not(.metalloid),
+.tslab-pt #other-nonmetals:checked ~ .periodic-table .element:not(.other-nonmetal),
+.tslab-pt #noble-gasses:checked ~ .periodic-table .element:not(.noble-gas),
+.tslab-pt #unknown:checked ~ .periodic-table .element:not(.unknown),
+.tslab-pt #alkali-metals:checked ~ .periodic-table .placeholder,
+.tslab-pt #alkaline-earth-metals:checked ~ .periodic-table .placeholder,
+.tslab-pt #lanthanoids:checked ~ .periodic-table .placeholder:not(.lanthanoid),
+.tslab-pt #actinoids:checked ~ .periodic-table .placeholder:not(.actinoid),
+.tslab-pt #transition-metals:checked ~ .periodic-table .placeholder,
+.tslab-pt #post-transition-metals:checked ~ .periodic-table .placeholder,
+.tslab-pt #metalloids:checked ~ .periodic-table .placeholder,
+.tslab-pt #other-nonmetals:checked ~ .periodic-table .placeholder,
+.tslab-pt #noble-gasses:checked ~ .periodic-table .placeholder,
+.tslab-pt #unknown:checked ~ .periodic-table .placeholder {
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.tslab-pt #alkali-metals:checked ~ .periodic-table .key label:not(.alkali-metal),
+.tslab-pt #alkaline-earth-metals:checked ~ .periodic-table .key label:not(.alkaline-earth-metal),
+.tslab-pt #lanthanoids:checked ~ .periodic-table .key label:not(.lanthanoid),
+.tslab-pt #actinoids:checked ~ .periodic-table .key label:not(.actinoid),
+.tslab-pt #transition-metals:checked ~ .periodic-table .key label:not(.transition-metal),
+.tslab-pt #post-transition-metals:checked ~ .periodic-table .key label:not(.post-transition-metal),
+.tslab-pt #metalloids:checked ~ .periodic-table .key label:not(.metalloid),
+.tslab-pt #other-nonmetals:checked ~ .periodic-table .key label:not(.other-nonmetal),
+.tslab-pt #noble-gasses:checked ~ .periodic-table .key label:not(.noble-gas),
+.tslab-pt #unknown:checked ~ .periodic-table .key label:not(.unknown) {
+  opacity: 0.65;
+}
+
+.tslab-pt .category-toggle:not(#lanthanoids):not(#actinoids):checked ~ .periodic-table .gap {
+  opacity: 0.5;
+}
+
+.tslab-pt .category-toggle:checked ~ .category-cancel {
+  visibility: visible;
+  pointer-events: all;
+  cursor: pointer;
+}
